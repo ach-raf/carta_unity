@@ -74,8 +74,8 @@ public class test : MonoBehaviour
 		{
 			_card = Instantiate(card, new Vector3(firstCardPosition + (distanceBetweenCards * i), yPosition, 0), Quaternion.identity);
 
-			_card.GetComponent<Card>().cardData = deckData.GetCard();
-			_card.GetComponent<SpriteRenderer>().sprite = _card.GetComponent<Card>().cardData.sprite;
+			_card.GetComponent<CardComponent>().cardData = deckData.GetCard();
+			_card.GetComponent<SpriteRenderer>().sprite = _card.GetComponent<CardComponent>().cardData.sprite;
 		}
 		float previousCardPosition = firstCardPosition;
 		/*foreach (CardData cardData in deckData.GetCardsByNumber(2))

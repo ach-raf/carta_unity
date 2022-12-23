@@ -6,10 +6,13 @@ public class DeckData
 {
 	private List<CardData> cards;
 	private Sprite cardBack;
+	private GameObject cardPrefab;
+
 
 	public DeckData()
 	{
 		cards = new List<CardData>();
+		EventManager.OnDeckChanged(this);
 	}
 
 
@@ -179,6 +182,17 @@ public class DeckData
 				return index;
 		}
 		return -1;
+	}
+
+	public void SetCardPrefab(GameObject _cardPrefab)
+	{
+		cardPrefab = _cardPrefab;
+		EventManager.OnDeckChanged(this);
+	}
+
+	public GameObject GetCardPrefab()
+	{
+		return cardPrefab;
 	}
 
 

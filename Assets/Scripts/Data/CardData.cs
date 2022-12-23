@@ -30,7 +30,7 @@ public class CardData
 	public void SetSprite(Sprite _sprite)
 	{
 		currentSprite = _sprite;
-		EventManager.OnCardSpriteChanged(currentSprite);
+
 	}
 
 

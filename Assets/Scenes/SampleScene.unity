@@ -168,6 +168,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &493507147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493507149}
+  - component: {fileID: 493507148}
+  m_Layer: 0
+  m_Name: PlayerOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &493507148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493507147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae38e19b93a28b44a17e0e2f711e4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &493507149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493507147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.73, y: -7.94, z: -0.16654147}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +389,7 @@ MonoBehaviour:
   - {fileID: -2089738552, guid: 52c54c1bd196cf14da6985a0c758eb72, type: 3}
   - {fileID: -1144344775, guid: 52c54c1bd196cf14da6985a0c758eb72, type: 3}
   - {fileID: 384060586, guid: 52c54c1bd196cf14da6985a0c758eb72, type: 3}
+  cardPrefab: {fileID: 2918713880851662469, guid: 11d6ebd599848084aa9641cad9b4389a, type: 3}
   cardBack: {fileID: 21300000, guid: d3c3bd48988d7a94298478958b9f7034, type: 3}
 --- !u!1 &1968633265
 GameObject:
@@ -391,4 +436,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63e8d176ddcf594e9c41502e32721b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 2918713880851662469, guid: 11d6ebd599848084aa9641cad9b4389a, type: 3}

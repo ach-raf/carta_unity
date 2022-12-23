@@ -28,8 +28,8 @@ public static class EventManager
 	public static void OnBoardShowCardsInPlay() => BoardShowCardsInPlay?.Invoke();
 
 	//clicked Card
-	public static event Action<Card> CardClicked;
-	public static void OnCardClicked(Card card_component) => CardClicked?.Invoke(card_component);
+	public static event Action<CardComponent> CardClicked;
+	public static void OnCardClicked(CardComponent card_component) => CardClicked?.Invoke(card_component);
 
 	public static event Action<Sprite> CardSpriteChanged;
 	public static void OnCardSpriteChanged(Sprite sprite) => CardSpriteChanged?.Invoke(sprite);
