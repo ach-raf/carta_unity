@@ -10,16 +10,20 @@ public class PlayerData
 	public PlayerData()
 	{
 		cardsInHand = new List<CardData>();
+		EventManager.OnPlayerChanged(this);
+
 	}
 
-	public void AddCardToHand(CardData card)
+	public void AddCard(CardData card)
 	{
 		cardsInHand.Add(card);
+		EventManager.OnPlayerChanged(this);
 	}
 
-	public void RemoveCardFromHand(CardData card)
+	public void RemoveCard(CardData card)
 	{
 		cardsInHand.Remove(card);
+		EventManager.OnPlayerChanged(this);
 	}
 
 	public void SetLastPlayedCard(CardData card)
@@ -40,6 +44,7 @@ public class PlayerData
 	public void ClearCardsInHand()
 	{
 		cardsInHand.Clear();
+		EventManager.OnPlayerChanged(this);
 	}
 
 

@@ -13,20 +13,28 @@ public class PlayerComponent : MonoBehaviour
 	{
 
 		EventManager.DeckChanged += DeckChanged;
+		EventManager.PlayerChanged += PlayerChanged;
 
 	}
 
 	private void OnDisable()
 	{
 		EventManager.DeckChanged -= DeckChanged;
+		EventManager.PlayerChanged -= PlayerChanged;
 
+
+	}
+
+	private void Awake()
+	{
+		playerData = new PlayerData();
+		cardsInHand = new List<GameObject>();
 
 	}
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		playerData = new PlayerData();
 	}
 
 	// Update is called once per frame
@@ -79,15 +87,29 @@ public class PlayerComponent : MonoBehaviour
 
 	void DestroyCardsInHand()
 	{
-		for (int i = 0; i < cardsInHand.Count; i++)
+		if (cardsInHand == null)
 		{
-			Destroy(cardsInHand[i]);
+
 		}
-		cardsInHand.Clear();
+		else
+		{
+			for (int i = 0; i < cardsInHand.Count; i++)
+			{
+				Destroy(cardsInHand[i]);
+			}
+			cardsInHand.Clear();
+		}
+
 	}
 
 	private void DeckChanged(DeckData _deckData)
 	{
 		deckData = _deckData;
+	}
+
+	private void PlayerChanged(PlayerData _playerData)
+	{
+		playerData = _playerData;
+		ShowCardsInHand();
 	}
 }

@@ -11,6 +11,9 @@ public class BoardComponent : MonoBehaviour
 	private List<GameObject> cardsInPlay;
 	private List<GameObject> cardsInDeck;
 
+	private float _zShift = 0;
+
+
 	private void Awake()
 	{
 		boardData = new BoardData();
@@ -52,29 +55,28 @@ public class BoardComponent : MonoBehaviour
 
 	void ShowCardsInPlay()
 	{
-		DestroyCardsInPlay();
-
-		//float _positionX = 0f;
-		Vector2 _position = new Vector2(0, 0);
+		//DestroyCardsInPlay();
+		CardData cardData = boardData.GetLastPlayedCard();
+		Vector3 _position = new Vector3(0, 0, _zShift);
+		_zShift -= 0.1f;
 		// random slight rotation for each card
-		float rotationVariation = 5f;
+		float rotationVariation = 15f;
 		float randomVariation;
 		CardComponent cardComponenet;
 
+		randomVariation = Random.Range(-rotationVariation, rotationVariation);
+		//_position.x = _positionX + randomVariation;
+		GameObject cardGameObject = Instantiate(deckData.GetCardPrefab(), _position, Quaternion.identity);
+		cardComponenet = cardGameObject.GetComponent<CardComponent>();
 
-		foreach (CardData cardData in boardData.GetCurrentCards())
-		{
-			randomVariation = Random.Range(-rotationVariation, rotationVariation);
-			//_position.x = _positionX + randomVariation;
-			GameObject cardGameObject = Instantiate(deckData.GetCardPrefab(), _position, Quaternion.identity);
-			cardComponenet = cardGameObject.GetComponent<CardComponent>();
-			cardComponenet.cardData = cardData;
-			cardGameObject.GetComponent<SpriteRenderer>().sprite = cardData.sprite;
-			cardGameObject.transform.Rotate(0, 0, randomVariation);
-			cardGameObject.name = cardData.ToString();
-			cardGameObject.transform.SetParent(gameObject.transform);
-			cardsInPlay.Add(cardGameObject);
-		}
+		cardComponenet.cardData = cardData;
+		cardGameObject.GetComponent<SpriteRenderer>().sprite = cardData.sprite;
+		cardGameObject.transform.Rotate(0, 0, randomVariation);
+		cardGameObject.name = cardData.ToString();
+		cardGameObject.transform.SetParent(gameObject.transform);
+		cardsInPlay.Add(cardGameObject);
+
+
 	}
 
 	void DestroyCardsInPlay()

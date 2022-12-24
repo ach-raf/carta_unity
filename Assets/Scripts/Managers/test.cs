@@ -15,6 +15,8 @@ public class test : MonoBehaviour
 
 	private DeckData deckData;
 	private BoardData boardData;
+
+	private PlayerData playerData;
 	private void Awake()
 	{
 		playerControlls = new PlayerControlls();
@@ -25,6 +27,8 @@ public class test : MonoBehaviour
 		playerControlls.Player.Fire.performed += LeftClicked;
 		EventManager.DeckChanged += DeckChanged;
 		EventManager.BoardChanged += BoardChanged;
+		EventManager.PlayerChanged += PlayerChanged;
+
 
 	}
 
@@ -34,6 +38,8 @@ public class test : MonoBehaviour
 		playerControlls.Player.Fire.performed -= LeftClicked;
 		EventManager.DeckChanged -= DeckChanged;
 		EventManager.BoardChanged -= BoardChanged;
+		EventManager.PlayerChanged += PlayerChanged;
+
 	}
 	void Start()
 	{
@@ -43,6 +49,15 @@ public class test : MonoBehaviour
 		//InstantiateCards(15);
 		EventManager.OnSetupDeck();
 		boardData.AddCard(deckData.GetCard());
+
+		//PlayerComponent playerComponent = gameObject.GetComponentInChildren<PlayerComponent>();
+		//playerComponent.playerData.AddCard(deckData.GetCard());
+		playerData.AddCard(deckData.GetCard());
+		playerData.AddCard(deckData.GetCard());
+		playerData.AddCard(deckData.GetCard());
+		playerData.AddCard(deckData.GetCard());
+		playerData.AddCard(deckData.GetCard());
+
 		//EventManager.OnBoardShowCardsInPlay();
 
 	}
@@ -113,5 +128,10 @@ public class test : MonoBehaviour
 	{
 		boardData = _boardData;
 
+	}
+
+	private void PlayerChanged(PlayerData _playerData)
+	{
+		playerData = _playerData;
 	}
 }

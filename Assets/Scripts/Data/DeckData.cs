@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeckData
 {
 	private List<CardData> cards;
+	private Queue<CardData> cardQueue;
 	private Sprite cardBack;
 	private GameObject cardPrefab;
 
@@ -12,6 +13,7 @@ public class DeckData
 	public DeckData()
 	{
 		cards = new List<CardData>();
+		cardQueue = new Queue<CardData>();
 		EventManager.OnDeckChanged(this);
 	}
 
@@ -46,6 +48,7 @@ public class DeckData
 	public void AddCard(CardData _card)
 	{
 		cards.Add(_card);
+		cardQueue.Enqueue(_card);
 		EventManager.OnDeckChanged(this);
 	}
 
@@ -167,7 +170,7 @@ public class DeckData
 				}
 			}
 		}
-		//ShuffleCards();
+		ShuffleCards();
 		return true;
 	}
 
@@ -193,6 +196,33 @@ public class DeckData
 	public GameObject GetCardPrefab()
 	{
 		return cardPrefab;
+	}
+
+	public CardData TakeCard()
+	{
+		if (cardQueue.Count > 0)
+		{
+			return cardQueue.Dequeue();
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public List<CardData> TakeCards(int numberOfCards)
+	{
+		List<CardData> _cards = new List<CardData>();
+		for (int i = 0; i < numberOfCards; i++)
+		{
+			_cards.Add(TakeCard());
+		}
+		return _cards;
+	}
+
+	public Queue<CardData> GetCardQueue()
+	{
+		return cardQueue;
 	}
 
 
