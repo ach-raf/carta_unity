@@ -11,7 +11,8 @@ public class test : MonoBehaviour
 	float height;
 	float width;
 
-	PlayerControlls playerControlls;
+
+	PlayerControls playerControls;
 
 	private DeckData deckData;
 	private BoardData boardData;
@@ -19,12 +20,11 @@ public class test : MonoBehaviour
 	private PlayerData playerData;
 	private void Awake()
 	{
-		playerControlls = new PlayerControlls();
+		playerControls = new PlayerControls();
 	}
 	private void OnEnable()
 	{
-		playerControlls.Enable();
-		playerControlls.Player.Fire.performed += LeftClicked;
+		playerControls.Enable();
 		EventManager.DeckChanged += DeckChanged;
 		EventManager.BoardChanged += BoardChanged;
 		EventManager.PlayerChanged += PlayerChanged;
@@ -34,8 +34,7 @@ public class test : MonoBehaviour
 
 	private void OnDisable()
 	{
-		playerControlls.Disable();
-		playerControlls.Player.Fire.performed -= LeftClicked;
+		playerControls.Disable();
 		EventManager.DeckChanged -= DeckChanged;
 		EventManager.BoardChanged -= BoardChanged;
 		EventManager.PlayerChanged += PlayerChanged;
@@ -79,7 +78,7 @@ public class test : MonoBehaviour
 		// the distance between the cards is the width of the screen divided by the number of cards
 		// the position of the first card is the width of the screen divided by 2
 		float yPosition = -5f;
-		float firstCardPosition = -15f;
+		float firstCardPosition = -4.8f;
 		float distanceBetweenCards = screenWidth / numberOfCards;
 		Debug.Log("screenWidth: " + screenWidth);
 		Debug.Log("distanceBetweenCards: " + distanceBetweenCards);
@@ -106,18 +105,7 @@ public class test : MonoBehaviour
 
 	}
 
-	private void LeftClicked(InputAction.CallbackContext context)
-	{
-		/*if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }*/
-		if (MouseOperations.ClickedObject2D() != null)
-		{
-			MouseOperations.ClickedObject2D().click();
-		}
 
-	}
 
 	private void DeckChanged(DeckData _deckData)
 	{

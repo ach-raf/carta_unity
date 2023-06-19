@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2918713880851662466}
   - component: {fileID: 3864756003213077121}
   - component: {fileID: 6811223121565628620}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.6571429, y: 5.6857142}
+    oldSize: {x: 2.56, y: 3.98}
     newSize: {x: 2.4089713, y: 3.9675002}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
