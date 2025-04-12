@@ -5,7 +5,6 @@ using UnityEngine;
 public class DeckData
 {
     private List<CardData> cards;
-    private Queue<CardData> cardQueue;
     private Sprite cardBack;
     private GameObject cardPrefab;
 
@@ -13,14 +12,7 @@ public class DeckData
     public DeckData()
     {
         cards = new List<CardData>();
-        cardQueue = new Queue<CardData>();
         EventManager.OnDeckChanged(this);
-    }
-
-
-    public DeckData(List<CardData> _cards)
-    {
-        cards = _cards;
     }
 
     public void SetDeck(List<CardData> _cards)
@@ -29,18 +21,18 @@ public class DeckData
         EventManager.OnDeckChanged(this);
     }
 
-    public List<CardData> GetDeck()
+    public List<CardData> GetCards()
     {
         return cards;
     }
 
-    public void SetCardBack(Sprite _cardBack)
+    public void SetCardBackSprite(Sprite _cardBackSprite)
     {
-        cardBack = _cardBack;
+        cardBack = _cardBackSprite;
         EventManager.OnDeckChanged(this);
     }
 
-    public Sprite GetCardBack()
+    public Sprite GetCardBackSprite()
     {
         return cardBack;
     }
@@ -48,7 +40,6 @@ public class DeckData
     public void AddCard(CardData _card)
     {
         cards.Add(_card);
-        cardQueue.Enqueue(_card);
         EventManager.OnDeckChanged(this);
     }
 
@@ -58,7 +49,6 @@ public class DeckData
         {
             AddCard(_card);
         }
-        EventManager.OnDeckChanged(this);
     }
 
     public void RemoveCard(CardData _card)
@@ -69,7 +59,7 @@ public class DeckData
 
     public CardData GetCardByIndex(int index)
     {
-        if (index < cards.Count)
+        if (index <= cards.Count)
         {
             CardData _card = cards[index];
             RemoveCard(_card);
@@ -81,33 +71,12 @@ public class DeckData
         }
     }
 
-    public CardData GetCard()
+    public CardData GetFirstCard()
     {
         return GetCardByIndex(0);
     }
 
-    public List<CardData> GetCards(int numberOfCards)
-    {
-        List<CardData> _cards = new List<CardData>();
-        while (numberOfCards < cards.Count)
-        {
-            AddCard(GetCard());
-        }
-        return _cards;
-    }
 
-    public List<CardData> GetCardsByNumber(int _number)
-    {
-        List<CardData> _cards = new List<CardData>();
-        for (int i = 0; i < cards.Count; i++)
-        {
-            if (cards[i].number == _number)
-            {
-                AddCard(cards[i]);
-            }
-        }
-        return _cards;
-    }
 
     public int GetCardsCount()
     {
@@ -197,32 +166,8 @@ public class DeckData
         return cardPrefab;
     }
 
-    /*public CardData TakeCard()
-    {
-        if (cardQueue.Count > 0)
-        {
-            return cardQueue.Dequeue();
-        }
-        else
-        {
-            return null;
-        }
-    }
 
-    public List<CardData> TakeCards(int numberOfCards)
-    {
-        List<CardData> _cards = new List<CardData>();
-        for (int i = 0; i < numberOfCards; i++)
-        {
-            _cards.Add(TakeCard());
-        }
-        return _cards;
-    }*/
 
-    public Queue<CardData> GetCardQueue()
-    {
-        return cardQueue;
-    }
 
 
 

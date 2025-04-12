@@ -29,7 +29,7 @@ public class DeckComponent : MonoBehaviour
     {
         deckData = new DeckData();
         deckData.SetCardPrefab(cardPrefab);
-        deckData.SetCardBack(cardBack);
+        deckData.SetCardBackSprite(cardBack);
     }
     void Start()
     {
